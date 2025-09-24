@@ -726,3 +726,98 @@ it("Test extendByRecurrenceRule - Every Friday the 13th except first and last", 
   expect(dates[0]).not.toEqual(exceptions[0]);
   expect(dates[4]).not.toEqual(exceptions[1]);
 });
+
+it("Test extendByRecurrenceRule - HOURLY recurrence after change to wintertime should still work", async () => {
+    // Start date right before change from summertime to wintertime
+    const start = new Date('2025-10-25T23:00:00.000Z');
+    const end = new Date('2026-01-01T00:00:00.000Z');
+    const value = "FREQ=HOURLY;COUNT=7;";
+
+    const rule = convertIcsRecurrenceRule(undefined, { value });
+
+    const dates = extendByRecurrenceRule(rule, {
+        start,
+        end,
+    });
+
+    expect(dates.length).toBe(7);
+    expect(dates[0].toISOString()).toEqual('2025-10-25T23:00:00.000Z');
+    expect(dates[1].toISOString()).toEqual('2025-10-26T00:00:00.000Z');
+    expect(dates[2].toISOString()).toEqual('2025-10-26T01:00:00.000Z');
+    expect(dates[3].toISOString()).toEqual('2025-10-26T02:00:00.000Z');
+    expect(dates[4].toISOString()).toEqual('2025-10-26T03:00:00.000Z');
+    expect(dates[5].toISOString()).toEqual('2025-10-26T04:00:00.000Z');
+    expect(dates[6].toISOString()).toEqual('2025-10-26T05:00:00.000Z');
+});
+
+it("Test extendByRecurrenceRule - DAILY recurrence after change to wintertime should keep same time of day", async () => {
+    // Start date right before change from summertime to wintertime
+    const start = new Date('2025-10-25T09:00:00.000Z');
+    const end = new Date('2026-01-01T00:00:00.000Z');
+    const value = "FREQ=DAILY;COUNT=2;";
+
+    const rule = convertIcsRecurrenceRule(undefined, { value });
+
+    const dates = extendByRecurrenceRule(rule, {
+        start,
+        end,
+    });
+
+    expect(dates.length).toBe(2);
+    expect(dates[0].toISOString()).toEqual('2025-10-25T09:00:00.000Z');
+    expect(dates[1].toISOString()).toEqual('2025-10-26T09:00:00.000Z');
+});
+
+it("Test extendByRecurrenceRule - WEEKLY recurrence after change to wintertime should keep same time of day", async () => {
+    // Start date right before change from summertime to wintertime
+    const start = new Date('2025-10-25T09:00:00.000Z');
+    const end = new Date('2026-01-01T00:00:00.000Z');
+    const value = "FREQ=WEEKLY;COUNT=2;";
+
+    const rule = convertIcsRecurrenceRule(undefined, { value });
+
+    const dates = extendByRecurrenceRule(rule, {
+        start,
+        end,
+    });
+
+    expect(dates.length).toBe(2);
+    expect(dates[0].toISOString()).toEqual('2025-10-25T09:00:00.000Z');
+    expect(dates[1].toISOString()).toEqual('2025-11-01T09:00:00.000Z');
+});
+
+it("Test extendByRecurrenceRule - MONTHLY recurrence after change to wintertime should keep same time of day", async () => {
+    // Start date right before change from summertime to wintertime
+    const start = new Date('2025-10-25T09:00:00.000Z');
+    const end = new Date('2026-01-01T00:00:00.000Z');
+    const value = "FREQ=MONTHLY;COUNT=2;";
+
+    const rule = convertIcsRecurrenceRule(undefined, { value });
+
+    const dates = extendByRecurrenceRule(rule, {
+        start,
+        end,
+    });
+
+    expect(dates.length).toBe(2);
+    expect(dates[0].toISOString()).toEqual('2025-10-25T09:00:00.000Z');
+    expect(dates[1].toISOString()).toEqual('2025-11-25T09:00:00.000Z');
+});
+
+it("Test extendByRecurrenceRule - YEARLY recurrence after change to wintertime should keep same time of day", async () => {
+    // Start date right before change from summertime to wintertime
+    const start = new Date('2025-10-25T09:00:00.000Z');
+    const end = new Date('2028-01-01T00:00:00.000Z');
+    const value = "FREQ=YEARLY;COUNT=2;";
+
+    const rule = convertIcsRecurrenceRule(undefined, { value });
+
+    const dates = extendByRecurrenceRule(rule, {
+        start,
+        end,
+    });
+
+    expect(dates.length).toBe(2);
+    expect(dates[0].toISOString()).toEqual('2025-10-25T09:00:00.000Z');
+    expect(dates[1].toISOString()).toEqual('2026-10-25T09:00:00.000Z');
+});
