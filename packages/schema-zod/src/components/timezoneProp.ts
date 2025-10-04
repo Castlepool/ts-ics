@@ -7,7 +7,7 @@ import {
 } from "ts-ics";
 import { z } from "zod";
 import { zIcsRecurrenceRule } from "../values/recurrenceRule";
-import { zIcsDateObject } from "../values/date";
+import { zIcsRecurrenceDates } from "../values/recurrenceDate";
 
 export const zIcsTimezoneProp: z.ZodType<
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -21,7 +21,7 @@ export const zIcsTimezoneProp: z.ZodType<
   offsetFrom: z.string(),
   recurrenceRule: zIcsRecurrenceRule.optional(),
   comment: z.string().optional(),
-  recurrenceDates: z.array(zIcsDateObject).optional(),
+  recurrenceDates: zIcsRecurrenceDates.optional(),
   name: z.string().optional(),
   nonStandard: z.record(z.string(), z.any()).optional(),
 });

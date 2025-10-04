@@ -5,6 +5,7 @@ import type { IcsDuration } from "../values/duration";
 import type { IcsOrganizer } from "../values/organizer";
 import type { IcsRecurrenceRule } from "../values/recurrenceRule";
 import type { IcsRecurrenceId } from "../values/recurrenceId";
+import type { IcsRecurrenceDates } from "../values/reccurenceDate";
 import type { IcsEventStatusType } from "../values/status";
 import type { IcsExceptionDates } from "../values/exceptionDate";
 import type { IcsClassType } from "../values/class";
@@ -35,7 +36,7 @@ export type IcsEventBase<
   categories?: string[];
   exceptionDates?: IcsExceptionDates;
   recurrenceRule?: IcsRecurrenceRule;
-  recurrenceDates?: IcsDateObject[];
+  recurrenceDates?: IcsRecurrenceDates;
   alarms?: IcsAlarm<TNonStandardValues>[];
   timeTransparent?: IcsTimeTransparentType;
   url?: string;

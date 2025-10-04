@@ -7,7 +7,7 @@ import {
 
 import { convertIcsLocalOnlyDateTime } from "../values/date";
 import { convertIcsRecurrenceRule } from "../values/recurrenceRule";
-import { convertIcsTimeStamp } from "../values/timeStamp";
+import { convertIcsRecurrenceDates } from "../values/recurrenceDate";
 import type { NonStandardValuesGeneric } from "@/types/nonStandard/nonStandardValues";
 import { _convertIcsComponent } from "./_component";
 import { BREAK_REGEX } from "@/constants";
@@ -40,12 +40,12 @@ export const convertIcsTimezoneProp = <T extends NonStandardValuesGeneric>(
         convertIcsRecurrenceRule(undefined, line, {
           timezones: options?.timezones,
         }),
-      recurrenceDates: ({ lines }) => 
-        lines.map(line => 
-          convertIcsTimeStamp(undefined, line, {
+    },
+    convertArrayValues: {
+      recurrenceDates:({ line }) =>
+          convertIcsRecurrenceDates(undefined, line, {
             timezones: options?.timezones,
-          })
-        ),
+          }),
     },
     nonStandard: options?.nonStandard,
     timezones: options?.timezones,

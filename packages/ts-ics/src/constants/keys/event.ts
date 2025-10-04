@@ -17,6 +17,7 @@ export const VEVENT_TO_KEYS = {
   location: "LOCATION",
   exceptionDates: "EXDATE",
   recurrenceRule: "RRULE",
+  recurrenceDates: "RDATE",
   stamp: "DTSTAMP",
   start: "DTSTART",
   summary: "SUMMARY",

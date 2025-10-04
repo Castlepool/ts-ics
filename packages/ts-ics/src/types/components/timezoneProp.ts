@@ -9,6 +9,7 @@ import type {
 } from "../nonStandard/nonStandardValues";
 import type { ConvertComponentType, ParseComponentType } from "../parse";
 import type { IcsRecurrenceRule } from "../values/recurrenceRule";
+import type { IcsRecurrenceDates } from "../values/reccurenceDate";
 import type { IcsTimezone } from "./timezone";
 
 export const TIMEZONE_PROP_COMPONENTS = [
@@ -28,7 +29,7 @@ export type IcsTimezoneProp<
   offsetFrom: string;
   recurrenceRule?: IcsRecurrenceRule;
   comment?: string;
-  recurrenceDates?: IcsDateObject[];
+  recurrenceDates?: IcsRecurrenceDates;
   name?: string;
   nonStandard?: TNonStandardValues;
 };

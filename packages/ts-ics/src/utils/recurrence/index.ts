@@ -11,6 +11,8 @@ export type ExtendByRecurrenceRuleOptions = {
   start: Date;
   end?: Date;
   exceptions?: Date[];
+  // FIXME: shouldn't I also pass recurrenceDates from RDATE field?
+  // FIXME: pass IcsDateObject instead of Date as input, so timezone can be read from that instead of passing a custom property here
   startTimezone?: string;
 };
 
@@ -46,6 +48,7 @@ export const extendByRecurrenceRule = (
     ? finalDateGroups.flat().splice(0, rule.count)
     : finalDateGroups.flat();
 
+  // FIXME: this is probably not right so far
   // Apply timezone adjustments if startTimezone is provided
   if (startTimezone) {
     finalDates = finalDates.map(date => {

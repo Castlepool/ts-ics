@@ -9,6 +9,7 @@ import { convertIcsOrganizer } from "../values/organizer";
 import { convertIcsRecurrenceRule } from "../values/recurrenceRule";
 import { convertIcsTimeStamp } from "../values/timeStamp";
 import { convertIcsExceptionDates } from "../values/exceptionDate";
+import { convertIcsRecurrenceDates } from "../values/recurrenceDate";
 import { convertIcsRecurrenceId } from "../values/recurrenceId";
 import { convertIcsClass } from "../values/class";
 import { convertIcsEventStatus } from "../values/status";
@@ -64,12 +65,6 @@ export const convertIcsEvent = <T extends NonStandardValuesGeneric>(
         convertIcsRecurrenceRule(undefined, line, {
           timezones: options?.timezones,
         }),
-      recurrenceDates: ({ lines }) => 
-        lines.map(line => 
-          convertIcsTimeStamp(undefined, line, {
-            timezones: options?.timezones,
-          })
-        ),
       duration: ({ line }) => convertIcsDuration(undefined, line),
       organizer: ({ line }) => convertIcsOrganizer(undefined, line),
       sequence: ({ line }) => convertIcsInteger(undefined, line),
@@ -87,6 +82,10 @@ export const convertIcsEvent = <T extends NonStandardValuesGeneric>(
         convertIcsExceptionDates(undefined, line, {
           timezones: options?.timezones,
         }),
+      recurrenceDates:({ line }) =>
+          convertIcsRecurrenceDates(undefined, line, {
+            timezones: options?.timezones,
+          }),
     },
     childComponents: {
       alarms: {

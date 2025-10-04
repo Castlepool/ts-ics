@@ -9,6 +9,7 @@ import {
 import { z } from "zod";
 import { zIcsDateObject } from "../values/date";
 import { zIcsExceptionDates } from "../values/exceptionDate";
+import { zIcsRecurrenceDates } from "../values/recurrenceDate";
 import { zIcsAttendee } from "../values/attendee";
 import { zIcsDuration } from "../values/duration";
 import { zIcsRecurrenceRule } from "../values/recurrenceRule";
@@ -40,7 +41,7 @@ export const zIcsEventBase: z.ZodType<IcsEventBase, IcsEventBase> = z.object({
   categories: z.array(z.string()).optional(),
   exceptionDates: zIcsExceptionDates.optional(),
   recurrenceRule: zIcsRecurrenceRule.optional(),
-  recurrenceDates: z.array(zIcsDateObject).optional(),
+  recurrenceDates: zIcsRecurrenceDates.optional(),
   alarms: z.array(zIcsAlarm).optional(),
   timeTransparent: zIcsTimeTransparentType.optional(),
   url: z.url().optional(),
