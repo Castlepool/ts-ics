@@ -12,7 +12,7 @@ export const VTIMEZONE_PROP_TO_KEYS = {
   name: "TZNAME",
   offsetFrom: "TZOFFSETFROM",
   offsetTo: "TZOFFSETTO",
-  recurrenceDate: "RDATE",
+  recurrenceDates: "RDATE",
   recurrenceRule: "RRULE",
   start: "DTSTART",
 } as const satisfies Record<IcsTimezonePropObjectKey, string>;

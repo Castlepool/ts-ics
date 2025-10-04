@@ -20,7 +20,7 @@ export const getTimezoneObjectOffset = (
   const vTimezone = timezones?.find((timezone) => timezone.id === tzid);
 
   if (vTimezone) {
-    const sortedProps = extendTimezoneProps(date, vTimezone.props).sort(
+    const sortedProps = extendTimezoneProps(date, vTimezone.props, tzid).sort(
       (a, b) => compareAsc(a.start, b.start)
     );
 

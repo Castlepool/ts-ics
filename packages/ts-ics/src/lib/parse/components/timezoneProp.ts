@@ -40,10 +40,12 @@ export const convertIcsTimezoneProp = <T extends NonStandardValuesGeneric>(
         convertIcsRecurrenceRule(undefined, line, {
           timezones: options?.timezones,
         }),
-      recurrenceDate: ({ line }) =>
-        convertIcsTimeStamp(undefined, line, {
-          timezones: options?.timezones,
-        }),
+      recurrenceDates: ({ lines }) => 
+        lines.map(line => 
+          convertIcsTimeStamp(undefined, line, {
+            timezones: options?.timezones,
+          })
+        ),
     },
     nonStandard: options?.nonStandard,
     timezones: options?.timezones,

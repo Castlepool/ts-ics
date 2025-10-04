@@ -21,7 +21,7 @@ export const zIcsTimezoneProp: z.ZodType<
   offsetFrom: z.string(),
   recurrenceRule: zIcsRecurrenceRule.optional(),
   comment: z.string().optional(),
-  recurrenceDate: zIcsDateObject.optional(),
+  recurrenceDates: z.array(zIcsDateObject).optional(),
   name: z.string().optional(),
   nonStandard: z.record(z.string(), z.any()).optional(),
 });

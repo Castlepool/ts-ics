@@ -40,6 +40,7 @@ export const zIcsEventBase: z.ZodType<IcsEventBase, IcsEventBase> = z.object({
   categories: z.array(z.string()).optional(),
   exceptionDates: zIcsExceptionDates.optional(),
   recurrenceRule: zIcsRecurrenceRule.optional(),
+  recurrenceDates: z.array(zIcsDateObject).optional(),
   alarms: z.array(zIcsAlarm).optional(),
   timeTransparent: zIcsTimeTransparentType.optional(),
   url: z.url().optional(),

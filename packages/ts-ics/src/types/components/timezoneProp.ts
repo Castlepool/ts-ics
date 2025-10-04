@@ -28,7 +28,7 @@ export type IcsTimezoneProp<
   offsetFrom: string;
   recurrenceRule?: IcsRecurrenceRule;
   comment?: string;
-  recurrenceDate?: IcsDateObject;
+  recurrenceDates?: IcsDateObject[];
   name?: string;
   nonStandard?: TNonStandardValues;
 };

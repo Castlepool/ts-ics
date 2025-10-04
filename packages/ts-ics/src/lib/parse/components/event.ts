@@ -64,6 +64,12 @@ export const convertIcsEvent = <T extends NonStandardValuesGeneric>(
         convertIcsRecurrenceRule(undefined, line, {
           timezones: options?.timezones,
         }),
+      recurrenceDates: ({ lines }) => 
+        lines.map(line => 
+          convertIcsTimeStamp(undefined, line, {
+            timezones: options?.timezones,
+          })
+        ),
       duration: ({ line }) => convertIcsDuration(undefined, line),
       organizer: ({ line }) => convertIcsOrganizer(undefined, line),
       sequence: ({ line }) => convertIcsInteger(undefined, line),
