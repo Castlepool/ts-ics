@@ -10,6 +10,7 @@ import { getOffsetFromTimezoneId } from "../timezone/getOffsetFromTimezoneId";
 export type ExtendByRecurrenceRuleOptions = {
   start: Date;
   end?: Date;
+  recurrences?: Date[];
   exceptions?: Date[];
   // FIXME: shouldn't I also pass recurrenceDates from RDATE field?
   // FIXME: pass IcsDateObject instead of Date as input, so timezone can be read from that instead of passing a custom property here

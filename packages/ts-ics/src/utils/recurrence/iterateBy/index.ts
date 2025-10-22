@@ -88,6 +88,8 @@ export const iterateBy = (
     );
   }
 
+  // TODO: rdates must be added BEFORE filtering out exception dates (see https://datatracker.ietf.org/doc/html/rfc5545#section-3.8.5.2)
+
   const filtered = extendedDateGroups.map((dates) =>
     dates.sort(compareAsc).filter((date) => {
       if (
